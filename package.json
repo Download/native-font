@@ -1,0 +1,36 @@
+{
+  "name": "native-font",
+  "version": "0.0.1",
+  "description": "Native font stacks for web wizards",
+  "main": "index.js",
+  "scripts": {
+    "build": "sass ./index.scss ./index.css --style=compressed",
+    "clean": "rimraf ./index.css ./index.css.map",
+    "dev": "npm run build -- --watch",
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/download/native-font.git"
+  },
+  "keywords": [
+    "font",
+    "\"font",
+    "stack\"",
+    "\"native",
+    "font\"",
+    "\"native",
+    "font",
+    "stack\""
+  ],
+  "author": "Stijn de Witt <stijndewitt@hotmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/download/native-font/issues"
+  },
+  "homepage": "https://github.com/download/native-font#readme",
+  "devDependencies": {
+    "rimraf": "^5.0.5",
+    "sass": "^1.69.5"
+  }
+}

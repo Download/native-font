@@ -1,3 +1,7 @@
+# CSS and Source map files
+*.css
+*.css.map
+
 # Logs
 logs
 *.log
