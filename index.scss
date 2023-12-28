@@ -1,6 +1,24 @@
 @use "sass:meta";
-@use "sass:list";
 @use "sass:map";
+
+$names: (
+  'color-emoji',
+  'system-ui',
+  'transitional',
+  'old-style',
+  'humanist',
+  'geometric-humanist',
+  'classical-humanist',
+  'neo-grotesque',
+  'monospace-slab-serif',
+  'monospace-code',
+  'industrial',
+  'rounded-sans',
+  'slab-serif',
+  'antique',
+  'didone',
+  'handwritten',
+);
 
 $stacks: (
   'color-emoji': meta.inspect((
@@ -156,7 +174,7 @@ $stacks: (
   --#{$name}: #{$font};
 }
 
-@mixin variables($list) {
+@mixin variables($list: $names) {
   @include variable('color-emoji', map.get($stacks, 'color-emoji'));
   @each $name in $list {
     @include variable($name, map.get($stacks, $name));
@@ -173,16 +191,9 @@ $stacks: (
   }
 }
 
-@mixin classes($list) {
+@mixin classes($list: $names) {
   @each $name in $list {
     @include class($name);
   }
 }
 
-@function names($map) {
-  $results: ();
-  @each $name, $value in $map {
-    $results: list.append($results, $name);
-  }
-  @return $results;
-}

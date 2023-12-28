@@ -1,8 +1,8 @@
 {
   "name": "native-font",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Native font stacks for web wizards",
-  "main": "index.js",
+  "main": "index.scss",
   "scripts": {
     "build": "sass ./index.scss ./index.css --style=compressed",
     "clean": "rimraf ./index.css ./index.css.map",
