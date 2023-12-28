@@ -1,23 +1,6 @@
 @use "sass:meta";
+@use "sass:list";
 @use "sass:map";
-
-$names: (
-  'system-ui',
-  'transitional',
-  'old-style',
-  'humanist',
-  'geometric-humanist',
-  'classical-humanist',
-  'neo-grotesque',
-  'monospace-slab-serif',
-  'monospace-code',
-  'industrial',
-  'rounded-sans',
-  'slab-serif',
-  'antique',
-  'didone',
-  'handwritten',
-);
 
 $stacks: (
   'color-emoji': meta.inspect((
@@ -194,4 +177,12 @@ $stacks: (
   @each $name in $list {
     @include class($name);
   }
+}
+
+@function names($map) {
+  $results: ();
+  @each $name, $value in $map {
+    $results: list.append($results, $name);
+  }
+  @return $results;
 }

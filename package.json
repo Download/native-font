@@ -1,6 +1,6 @@
 {
   "name": "native-font",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Native font stacks for web wizards",
   "main": "index.js",
   "scripts": {
