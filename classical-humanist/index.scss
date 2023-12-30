@@ -1,0 +1,15 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../sans-serif";
+
+$name: 'classical-humanist';
+$title: 'Classical Humanist';
+$ref: 'https://modernfontstacks.com/#classical-humanist';
+$fallback: sans-serif.$name;
+$font: native-font.add($name, meta.inspect((
+  Optima,
+  Candara,
+  'Noto Sans',
+  source-sans-pro,
+  var(--#{$fallback}),
+)));

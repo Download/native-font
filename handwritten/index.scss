@@ -1,0 +1,16 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../cursive";
+
+$name: 'handwritten';
+$title: 'Handwritten';
+$ref: 'https://modernfontstacks.com/#handwritten';
+$fallback: cursive.$name;
+$font: native-font.add($name, meta.inspect((
+  'Segoe Print',
+  'Bradley Hand',
+  Chilanka,
+  TSCu_Comic,
+  casual,
+  var(--#{$fallback}),
+)));

@@ -1,0 +1,13 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../sans-serif";
+
+$name: 'verdana';
+$title: 'Verdana';
+$ref: 'https://www.cssfontstack.com/Verdana';
+$fallback: sans-serif.$name;
+$font: native-font.add($name, meta.inspect((
+  Verdana,
+  Geneva,
+  var(--#{$fallback}),
+)));

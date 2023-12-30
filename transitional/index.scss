@@ -1,0 +1,15 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../serif";
+
+$name: 'transitional';
+$title: 'Transitional';
+$ref: 'https://modernfontstacks.com/#transitional';
+$fallback: serif.$name;
+$font: native-font.add($name, meta.inspect((
+  Charter,
+  'Bitstream Charter',
+  'Sitka Text',
+  Cambria,
+  var(--#{$fallback}),
+)));

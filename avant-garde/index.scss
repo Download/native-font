@@ -1,0 +1,16 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../sans-serif";
+
+$name: 'avant-garde';
+$title: 'Avant Garde';
+$ref: 'https://www.cssfontstack.com/Avant-Garde';
+$fallback: sans-serif.$name;
+$font: native-font.add($name, meta.inspect((
+  'Avant Garde',
+  Avantgarde,
+  'Century Gothic',
+  CenturyGothic,
+  AppleGothic,
+  var(--#{$fallback}),
+)));

@@ -1,0 +1,14 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../monospace";
+
+$name: 'monospace-console';
+$title: 'Monospace Console';
+$font: native-font.add($name, meta.inspect((
+  Consolas,
+  'Andale Mono WT',
+  'Andale Mono',
+  'Lucida Console',
+  'Lucida Sans Typewriter',
+  var(--#{monospace.$name}),
+)));

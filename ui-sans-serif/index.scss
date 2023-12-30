@@ -1,0 +1,14 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../sans-serif-ui";
+
+$name: 'ui-sans-serif';
+$title: 'ui-sans-serif';
+$ref: '';
+$fallback: sans-serif-ui.$name;
+$font: native-font.add($name, meta.inspect((
+  ui-sans-serif,
+  -apple-system,
+  BlinkMacSystemFont,
+  var(--#{$fallback}),
+)));

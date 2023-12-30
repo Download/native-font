@@ -1,0 +1,17 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../serif";
+
+$name: 'didone';
+$title: 'Didone';
+$ref: 'https://modernfontstacks.com/#didone';
+$fallback: serif.$name;
+$font: native-font.add($name, meta.inspect((
+  Didot,
+  'Bodoni MT',
+  'Noto Serif Display',
+  'URW Palladio L',
+  P052,
+  Sylfaen,
+  var(--#{$fallback}),
+)));

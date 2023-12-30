@@ -1,0 +1,11 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../monospace-code";
+
+$name: 'ui-monospace';
+$title: 'ui-monospace';
+$ref: 'https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#ui-monospace';
+$font: native-font.add($name, meta.inspect((
+  ui-monospace,
+  var(--#{monospace-code.$name}),
+)));

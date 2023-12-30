@@ -1,0 +1,19 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../sans-serif";
+
+$name: 'rounded-sans';
+$title: 'Rounded Sans';
+$ref: 'https://modernfontstacks.com/#rounded-sans';
+$fallback: sans-serif.$name;
+$font: native-font.add($name, meta.inspect((
+  'Hiragino Maru Gothic ProN',
+  Quicksand,
+  Comfortaa,
+  Manjari,
+  'Arial Rounded MT',
+  'Arial Rounded MT Bold',
+  Calibri,
+  source-sans-pro,
+  var(--#{$fallback}),
+)));

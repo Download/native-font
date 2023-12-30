@@ -1,12 +1,26 @@
 {
   "name": "native-font",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Native font stacks for web wizards",
-  "main": "index.scss",
+  "sass": "_index.scss",
+  "style": "all.css",
+  "files": [
+    "/**/*.scss",
+    "/**/*.css",
+    "/**/*.css.map",
+    ".gitignore",
+    "LICENSE",
+    "package.json",
+    "README.md"
+  ],
   "scripts": {
-    "build": "sass ./index.scss ./index.css --style=compressed",
-    "clean": "rimraf ./index.css ./index.css.map",
-    "dev": "npm run build -- --watch",
+    "build:base": "sass ./base.scss ./base.css && sass ./base.scss ./base.min.css --style=compressed",
+    "build:modern": "sass ./modern.scss ./modern.css && sass ./modern.scss ./modern.min.css --style=compressed",
+    "build:cssfonts": "sass ./cssfonts.scss ./cssfonts.css && sass ./cssfonts.scss ./cssfonts.min.css --style=compressed",
+    "build:all": "sass ./all.scss ./all.css && sass ./all.scss ./all.min.css --style=compressed",
+    "build": "npm run build:base && npm run build:modern && npm run build:cssfonts && npm run build:all",
+    "clean": "rimraf ./*.css ./*.css.map",
+    "dev": "sass ./all.scss ./all.css -- --watch",
     "test": "exit 0"
   },
   "repository": {

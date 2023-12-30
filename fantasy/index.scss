@@ -1,0 +1,12 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../color-emoji";
+
+$name: 'fantasy';
+$title: 'fantasy';
+$ref: 'https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#fantasy';
+$fallback: color-emoji.$name;
+$font: native-font.add($name, meta.inspect((
+  fantasy,
+  var(--#{$fallback}),
+)));

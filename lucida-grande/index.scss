@@ -1,0 +1,15 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../verdana";
+
+$name: 'lucida-grande';
+$title: 'Lucida Grande';
+$ref: 'https://www.cssfontstack.com/Lucida-Grande';
+$fallback: verdana.$name;
+$font: native-font.add($name, meta.inspect((
+  'Lucida Grande',
+  'Lucida Sans Unicode',
+  'Lucida Sans',
+  Geneva,
+  var(--#{$fallback}),
+)));

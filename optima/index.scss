@@ -1,0 +1,16 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../arial";
+
+$name: 'optima';
+$title: 'Optima';
+$ref: 'https://www.cssfontstack.com/Optima';
+$fallback: arial.$name;
+$font: native-font.add($name, meta.inspect((
+  Optima,
+  Segoe,
+  'Segoe UI',
+  Candara,
+  Calibri,
+  var(--#{$fallback}),
+)));

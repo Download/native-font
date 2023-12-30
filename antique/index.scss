@@ -1,0 +1,17 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../serif";
+
+$name: 'antique';
+$title: 'Antique';
+$ref: 'https://modernfontstacks.com/#antique';
+$fallback: serif.$name;
+$font: native-font.add($name, meta.inspect((
+  Superclarendon,
+  'Bookman Old Style',
+  'URW Bookman',
+  'URW Bookman L',
+  'Georgia Pro',
+  Georgia,
+  var(--#{$fallback}),
+)));

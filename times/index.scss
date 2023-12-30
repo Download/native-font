@@ -1,0 +1,12 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../serif";
+
+$name: 'times';
+$title: 'Times';
+$ref: 'https://www.cssfontstack.com/Times';
+$fallback: serif.$name;
+$font: native-font.add($name, meta.inspect((
+  Times,
+  var(--#{$fallback}),
+)));

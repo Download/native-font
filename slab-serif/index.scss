@@ -1,0 +1,15 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../serif";
+
+$name: 'slab-serif';
+$title: 'Slab Serif';
+$fallback: serif.$name;
+$font: native-font.add($name, meta.inspect((
+  Rockwell,
+  'Rockwell Nova',
+  'Roboto Slab',
+  'DejaVu Serif',
+  'Sitka Small',
+  var(--#{$fallback}),
+)));

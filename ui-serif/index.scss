@@ -1,0 +1,12 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../serif-ui";
+
+$name: 'ui-serif';
+$title: 'ui-serif';
+$ref: 'https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#ui-serif';
+$fallback: serif-ui.$name;
+$font: native-font.add($name, meta.inspect((
+  ui-serif,
+  var(--#{$fallback}),
+)));

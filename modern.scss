@@ -1,0 +1,6 @@
+@use "./" as native-font;
+@use "./sets/modern";
+
+:root, ::backdrop {
+  @include native-font.variables();
+}

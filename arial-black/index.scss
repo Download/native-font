@@ -1,0 +1,14 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../arial";
+
+$name: 'arial-black';
+$title: 'Arial Black';
+$ref: 'https://www.cssfontstack.com/Arial-Black';
+$fallback: arial.$name;
+$font: native-font.add($name, meta.inspect((
+  'Arial Black',
+  'Arial Bold',
+  Gadget,
+  var(--#{$fallback}),
+)));

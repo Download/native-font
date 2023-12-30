@@ -1,0 +1,13 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../calibri";
+
+$name: 'gill-sans';
+$title: 'Gill Sans';
+$ref: 'https://www.cssfontstack.com/Gill-Sans';
+$fallback: calibri.$name;
+$font: native-font.add($name, meta.inspect((
+  'Gill Sans',
+  'Gill Sans MT',
+  var(--#{$fallback}),
+)));

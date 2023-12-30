@@ -1,0 +1,12 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../rounded-sans";
+
+$name: 'ui-rounded';
+$title: 'ui-rounded';
+$ref: 'https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#ui-rounded';
+$fallback: rounded-sans.$name;
+$font: native-font.add($name, meta.inspect((
+  ui-rounded,
+  var(--#{$fallback}),
+)));

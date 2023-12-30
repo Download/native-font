@@ -1,0 +1,11 @@
+// generic fonts defined by W3c, used for fallback
+@use "../" as native-font;
+
+@use "../cursive";
+@use "../emoji";
+@use "../fangsong";
+@use "../fantasy";
+@use "../math";
+@use "../monospace";
+@use "../sans-serif";
+@use "../serif";

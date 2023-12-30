@@ -1,0 +1,17 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../sans-serif";
+
+$name: 'handwritten';
+$title: 'Handwritten';
+$ref: 'https://modernfontstacks.com/#handwritten';
+$fallback: sans-serif.$name;
+$font: native-font.add($name, meta.inspect((
+  Seravek,
+  'Gill Sans Nova',
+  Ubuntu,
+  Calibri,
+  'DejaVu Sans',
+  source-sans-pro,
+  var(--#{$fallback}),
+)));

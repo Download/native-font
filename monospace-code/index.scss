@@ -1,0 +1,14 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../monospace-console";
+
+$name: 'monospace-code';
+$title: 'Monospace Code';
+$font: native-font.add($name, meta.inspect((
+  'Cascadia Code',
+  'Source Code Pro',
+  SFMono-Regular,
+  Menlo,
+  Monaco,
+  var(--#{monospace-console.$name}),
+)));

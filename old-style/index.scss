@@ -1,0 +1,15 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../serif";
+
+$name: 'old-style';
+$title: 'Old Style';
+$ref: 'https://modernfontstacks.com/#old-style';
+$fallback: serif.$name;
+$font: meta.inspect((
+  'Iowan Old Style',
+  'Palatino Linotype',
+  'URW Palladio L',
+  P052,
+  var(--#{$fallback}),
+));

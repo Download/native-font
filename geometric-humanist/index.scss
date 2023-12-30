@@ -1,0 +1,16 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../sans-serif";
+
+$name: 'geometric-humanist';
+$title: 'Geometric Humanist';
+$ref: 'https://modernfontstacks.com/#geometric-humanist';
+$fallback: sans-serif.$name;
+$font: native-font.add($name, meta.inspect((
+  Avenir,
+  Montserrat,
+  Corbel,
+  'URW Gothic',
+  source-sans-pro,
+  var(--#{$fallback}),
+)));

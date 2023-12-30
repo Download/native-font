@@ -1,0 +1,13 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../times";
+
+$name: 'times-new-roman';
+$title: 'Times New Roman';
+$ref: 'https://www.cssfontstack.com/Times-New-Roman';
+$fallback: times.$name;
+$font: native-font.add($name, meta.inspect((
+  TimesNewRoman,
+  'Times New Roman',
+  var(--#{$fallback}),
+)));

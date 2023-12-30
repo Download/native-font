@@ -1,0 +1,16 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../color-emoji";
+
+$name: 'serif';
+$title: 'serif';
+$fallback: color-emoji.$name;
+$font: native-font.add($name, meta.inspect((
+  TimesNewRoman,
+  'Times New Roman',
+  Times,
+  Baskerville,
+  Georgia,
+  serif,
+  var(--#{$fallback}),
+)));

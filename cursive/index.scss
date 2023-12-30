@@ -1,0 +1,12 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../color-emoji";
+
+$name: 'cursive';
+$title: 'cursive';
+$ref: 'https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#cursive';
+$fallback: color-emoji.$name;
+$font: native-font.add($name, meta.inspect((
+  cursive,
+  var(--#{$fallback}),
+)));

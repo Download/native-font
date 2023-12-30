@@ -1,0 +1,14 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../sans-serif";
+
+$name: 'tahoma';
+$title: 'Tahoma';
+$ref: 'https://www.cssfontstack.com/Tahoma';
+$fallback: sans-serif.$name;
+$font: native-font.add($name, meta.inspect((
+  Tahoma,
+  Verdana,
+  Segoe,
+  var(--#{$fallback}),
+)));

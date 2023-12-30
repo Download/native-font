@@ -1,0 +1,15 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../serif";
+
+$name: 'big-caslon';
+$title: 'Big Caslon';
+$ref: 'https://www.cssfontstack.com/Big-Caslon';
+$fallback: serif.$name;
+$font: native-font.add($name, meta.inspect((
+  'Big Caslon',
+  'Book Antiqua',
+  'Palatino Linotype',
+  Georgia,
+  var(--#{$fallback}),
+)));

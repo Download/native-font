@@ -1,0 +1,15 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../sans-serif";
+
+$name: 'arial';
+$title: 'Arial';
+$ref: 'https://www.cssfontstack.com/Arial';
+$fallback: sans-serif.$name;
+$font: native-font.add($name, meta.inspect((
+  'Arial Nova',
+  Arial,
+  'Helvetica Neue',
+  Helvetica,
+  var(--#{$fallback}),
+)));

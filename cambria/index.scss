@@ -1,0 +1,13 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../serif";
+
+$name: 'cambria';
+$title: 'Cambria';
+$ref: 'https://www.cssfontstack.com/Cambria';
+$fallback: serif.$name;
+$font: native-font.add($name, meta.inspect((
+  Cambria,
+  Georgia,
+  var(--#{$fallback}),
+)));

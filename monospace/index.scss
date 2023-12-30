@@ -1,0 +1,17 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../color-emoji";
+
+$name: 'monospace';
+$title: 'Monospace';
+$fallback: color-emoji.$name;
+$font: native-font.add($name, meta.inspect((
+  'DejaVu Sans Mono',
+  'Bitstream Vera Sans Mono',
+  'Liberation Mono',
+  'Nimbus Mono L',
+  'Courier New',
+  Courier,
+  monospace,
+  var(--#{color-emoji.$name}),
+)));

@@ -1,0 +1,12 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../color-emoji";
+
+$name: 'fangsong';
+$title: 'fangsong';
+$ref: 'https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#fangsong';
+$fallback: color-emoji.$name;
+$font: native-font.add($name, meta.inspect((
+  fangsong,
+  var(--#{$fallback}),
+)));

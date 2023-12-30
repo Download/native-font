@@ -1,0 +1,13 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../arial";
+
+$name: 'arial-rounded-mt-bold';
+$title: 'Arial Rounded MT Bold';
+$ref: 'https://www.cssfontstack.com/Arial-Rounded-MT-Bold';
+$fallback: arial.$name;
+$font: native-font.add($name, meta.inspect((
+  'Arial Rounded MT Bold',
+  'Helvetica Rounded',
+  var(--#{$fallback}),
+)));

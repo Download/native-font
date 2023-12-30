@@ -1,0 +1,13 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../color-emoji" as ce;
+
+$name: 'sans-serif';
+$title: 'sans-serif';
+$fallback: ce.$name;
+$font: native-font.add($name, meta.inspect((
+  Helvetica,
+  Arial,
+  sans-serif,
+  var(--#{$fallback}),
+)));

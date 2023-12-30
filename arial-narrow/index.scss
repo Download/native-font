@@ -1,0 +1,12 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../arial";
+
+$name: 'arial-narrow';
+$title: 'Arial Narrow';
+$ref: 'https://www.cssfontstack.com/Arial-Narrow';
+$fallback: arial.$name;
+$font: native-font.add($name, meta.inspect((
+  'Arial Narrow',
+  var(--#{$fallback}),
+)));

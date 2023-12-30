@@ -1,0 +1,12 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../lucida-grande";
+
+$name: 'trebuchet-ms';
+$title: 'Trebuchet MS';
+$ref: 'https://www.cssfontstack.com/Trebuchet-MS';
+$fallback: lucida-grande.$name;
+$font: native-font.add($name, meta.inspect((
+  'Trebuchet MS',
+  var(--#{$fallback}),
+)));

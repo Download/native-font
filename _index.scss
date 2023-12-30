@@ -1,0 +1,41 @@
+@use "sass:meta";
+@use "sass:list";
+@use "sass:map";
+
+$fonts: ();
+
+@function add($name, $font) {
+  $fonts: map.merge($fonts, ( $name: $font )) !global;
+  @debug Loaded font #{$name} #{$font};
+  @return $font;
+}
+
+@function get($name) {
+  @return map.get($fonts, $name);
+}
+
+@mixin variable($name) {
+  --#{$name}: #{get($name)};
+}
+
+@mixin variables($names: map.keys($fonts)) {
+  @each $name, $font in $fonts {
+    @if list.index($names, $name) {
+      @include variable($name);
+    }
+  }
+}
+
+@mixin class($name) {
+  .#{$name}{
+    font-family: var(--#{$name});
+  }
+}
+
+@mixin classes($names: map.keys($fonts)) {
+  @each $name, $font in $fonts {
+    @if list.index($names, $name) {
+      @include class($name);
+    }
+  }
+}

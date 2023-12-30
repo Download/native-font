@@ -1,0 +1,16 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../sans-serif";
+
+$name: 'sans-serif-ui';
+$title: 'Sans Serif UI';
+$ref: 'https://gist.github.com/cscottyb/f61dfc9446f1f4c5628382ed00e2abfa';
+$fallback: sans-serif.$name;
+$font: native-font.add($name, meta.inspect((
+  "Segoe UI",
+  Roboto,
+  "Inter",
+  "Noto Sans",
+  Tahoma,
+  var(--#{$fallback}),
+)));

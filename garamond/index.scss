@@ -1,0 +1,15 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../times-new-roman";
+
+$name: 'garamond';
+$title: 'Garamonf';
+$ref: 'https://www.cssfontstack.com/Garamond';
+$fallback: times-new-roman.$name;
+$font: native-font.add($name, meta.inspect((
+  Garamond,
+  Baskerville,
+  'Baskerville Old Face',
+  'Hoefler Text',
+  var(--#{$fallback}),
+)));

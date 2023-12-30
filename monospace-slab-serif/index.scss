@@ -1,0 +1,12 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../monospace";
+
+$name: 'monospace-slab-serif';
+$title: 'Monospace Slab Serif';
+$fallback: monospace.$name;
+$font: native-font.add($name, meta.inspect((
+  'Nimbus Mono PS',
+  'Courier New',
+  var(--#{monospace.$name}),
+)));

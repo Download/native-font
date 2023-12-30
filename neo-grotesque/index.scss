@@ -1,0 +1,13 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../sans-serif-nova";
+
+$name: 'neo-grotesque';
+$title: 'Neo Grotesque';
+$ref: 'https://modernfontstacks.com/#neo-grotesque';
+$fallback: sans-serif-nova.$name;
+$font: meta.inspect((
+  Inter,
+  Roboto,
+  var(--#{$fallback}),
+));

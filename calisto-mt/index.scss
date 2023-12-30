@@ -1,0 +1,19 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../serif";
+
+$name: 'calisto-mt';
+$title: 'Calisto MT';
+$ref: 'https://www.cssfontstack.com/Calisto-MT';
+$fallback: serif.$name;
+$font: native-font.add($name, meta.inspect((
+  'Calisto MT',
+  'Bookman Old Style',
+  Bookman,
+  'Goudy Old Style',
+  Garamond,
+  'Hoefler Text',
+  'Bitstream Charter',
+  Georgia,
+  var(--#{$fallback}),
+)));

@@ -1,0 +1,14 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../arial";
+
+$name: 'geneva';
+$title: 'Geneva';
+$ref: 'https://www.cssfontstack.com/Geneva';
+$fallback: arial.$name;
+$font: native-font.add($name, meta.inspect((
+  Geneva,
+  Tahoma,
+  Verdana,
+  var(--#{$fallback}),
+)));

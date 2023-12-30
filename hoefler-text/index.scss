@@ -1,0 +1,13 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../garamond";
+
+$name: 'hoefler-text';
+$title: 'Hoefler Text';
+$ref: 'https://www.cssfontstack.com/Hoefler-Text';
+$fallback: garamond.$name;
+$font: native-font.add($name, meta.inspect((
+  'Hoefler Text',
+  'Baskerville Old Face',
+  var(--#{$fallback}),
+)));

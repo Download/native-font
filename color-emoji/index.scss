@@ -1,0 +1,16 @@
+@use "sass:meta";
+@use "../" as native-font;
+
+
+$name: 'color-emoji';
+@debug $name;
+
+$title: 'Color Emoji';
+$ref: 'https://gist.github.com/cscottyb/f61dfc9446f1f4c5628382ed00e2abfa';
+
+$font: native-font.add($name, meta.inspect((
+  "Apple Color Emoji",
+  "Segoe UI Emoji",
+  "Segoe UI Symbol",
+  "Noto Color Emoji",
+)));

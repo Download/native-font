@@ -1,0 +1,16 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../serif";
+
+$name: 'palatino';
+$title: 'Palatino';
+$ref: 'https://www.cssfontstack.com/Palatino';
+$fallback: serif.$name;
+$font: native-font.add($name, meta.inspect((
+  Palatino,
+  'Palatino Linotype',
+  'Palatino LT STD',
+  'Book Antiqua',
+  Georgia,
+  var(--#{$fallback}),
+)));

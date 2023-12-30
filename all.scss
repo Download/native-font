@@ -1,0 +1,6 @@
+@use "./" as native-font;
+@use "./sets/all";
+
+:root, ::backdrop {
+  @include native-font.variables();
+}
