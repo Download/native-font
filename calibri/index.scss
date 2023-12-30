@@ -1,16 +1,17 @@
 @use "sass:meta";
 @use "../" as native-font;
-@use "../arial";
+@use "../sans-serif";
 
 $name: 'calibri';
 $title: 'Calibri';
 $ref: 'https://www.cssfontstack.com/Calibri';
-$fallback: arial.$name;
+$fallback: sans-serif.$name;
 $font: native-font.add($name, meta.inspect((
   Calibri,
   Candara,
   Segoe,
   'Segoe UI',
   Optima,
+  Arial,
   var(--#{$fallback}),
 )));

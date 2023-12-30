@@ -1,14 +1,11 @@
 @use "sass:meta";
 @use "../" as native-font;
-@use "../color-emoji";
 @use "../emoji";
 
-$name: 'magicon';
-$title: 'Magicon';
-$ref: 'https://npmjs.com/package/magicon';
+$name: 'ui-emoji';
+$title: 'ui-emoji';
+$ref: '';
 $fallback: emoji.$name;
 $font: native-font.add($name, meta.inspect((
-  Magicon,
-  var(--#{color-emoji.$name}),
   var(--#{$fallback}),
 )));

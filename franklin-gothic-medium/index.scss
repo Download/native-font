@@ -1,14 +1,15 @@
 @use "sass:meta";
 @use "../" as native-font;
-@use "../arial";
+@use "../sans-serif";
 
 $name: 'franklin-gothic-medium';
 $title: 'Franklin Gothic Medium';
 $ref: 'https://www.cssfontstack.com/Franklin-Gothic-Medium';
-$fallback: arial.$name;
+$fallback: sans-serif.$name;
 $font: native-font.add($name, meta.inspect((
   'Franklin Gothic Medium',
   'Franklin Gothic',
   'ITC Franklin Gothic',
+  Arial,
   var(--#{$fallback}),
 )));

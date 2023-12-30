@@ -1,0 +1,17 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../serif";
+
+$name: 'rockwell';
+$title: 'Rockwell';
+$ref: 'https://www.cssfontstack.com/Rockwell';
+$fallback: serif.$name;
+$font: native-font.add($name, meta.inspect((
+  Rockwell,
+  'Courier Bold',
+  Courier,
+  Georgia,
+  Times,
+  'Times New Roman',
+  var(--#{$fallback}),
+)));

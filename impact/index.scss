@@ -1,11 +1,11 @@
 @use "sass:meta";
 @use "../" as native-font;
-@use "../arial-black";
+@use "../sans-serif";
 
 $name: 'impact';
 $title: 'Impact';
 $ref: 'https://www.cssfontstack.com/Impact';
-$fallback: arial-black.$name;
+$fallback: sans-serif.$name;
 $font: native-font.add($name, meta.inspect((
   Impact,
   Haettenschweiler,
@@ -13,5 +13,8 @@ $font: native-font.add($name, meta.inspect((
   'Charcoal',
   'Helvetica Inserat',
   'Bitstream Vera Sans Bold',
+  'Arial Black',
+  'Arial Bold',
+  Gadget,
   var(--#{$fallback}),
 )));

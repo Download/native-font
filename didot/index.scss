@@ -1,15 +1,16 @@
 @use "sass:meta";
 @use "../" as native-font;
-@use "../times-new-roman";
+@use "../serif";
 
 $name: 'didot';
 $title: 'Didot';
 $ref: 'https://www.cssfontstack.com/Didot';
-$fallback: times-new-roman.$name;
+$fallback: serif.$name;
 $font: native-font.add($name, meta.inspect((
   Didot,
   'Didot LT STD',
   'Hoefler Text',
   Garamond,
+  'Times New Roman',
   var(--#{$fallback}),
 )));

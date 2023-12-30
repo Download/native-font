@@ -6,6 +6,9 @@ $name: 'sans-serif';
 $title: 'sans-serif';
 $fallback: ce.$name;
 $font: native-font.add($name, meta.inspect((
+  'Helvetica Neue',
+  'Arial Nova',
+  'Nimbus Sans',
   Helvetica,
   Arial,
   sans-serif,

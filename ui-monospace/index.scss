@@ -1,11 +1,22 @@
 @use "sass:meta";
 @use "../" as native-font;
-@use "../monospace-code";
+@use "../monospace";
 
 $name: 'ui-monospace';
 $title: 'ui-monospace';
 $ref: 'https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#ui-monospace';
+$fallback: monospace.$name;
 $font: native-font.add($name, meta.inspect((
   ui-monospace,
-  var(--#{monospace-code.$name}),
+  'Cascadia Code',
+  'Source Code Pro',
+  SFMono-Regular,
+  Menlo,
+  Monaco,
+  Consolas,
+  'Andale Mono WT',
+  'Andale Mono',
+  'Lucida Console',
+  'Lucida Sans Typewriter',
+  var(--#{$fallback}),
 )));

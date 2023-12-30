@@ -1,13 +1,12 @@
 @use "sass:meta";
 @use "../" as native-font;
-@use "../garamond";
+@use "../baskerville";
 
 $name: 'baskerville-old-face';
 $title: 'Baskerville Old Face';
 $ref: 'https://www.cssfontstack.com/Baskerville-Old-Face';
-$fallback: garamond.$name;
+$fallback: baskerville.$name;
 $font: native-font.add($name, meta.inspect((
   'Baskerville Old Face',
-  'Hoefler Text',
   var(--#{$fallback}),
 )));

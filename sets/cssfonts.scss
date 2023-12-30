@@ -1,5 +1,6 @@
 // all base fonts + fonts from https://www.cssfontstack.com/
 @use "base";
+@use "../andale-mono";
 @use "../arial";
 @use "../arial-black";
 @use "../arial-narrow";
@@ -10,11 +11,15 @@
 @use "../big-caslon";
 @use "../bodoni-mt";
 @use "../book-antiqua";
+@use "../brush-script-mt";
 @use "../calibri";
 @use "../calisto-mt";
 @use "../cambria";
 @use "../candara";
 @use "../century-gothic";
+@use "../consolas";
+@use "../copperplate";
+@use "../courier-new";
 @use "../didot";
 @use "../franklin-gothic-medium";
 @use "../futura";
@@ -26,9 +31,17 @@
 @use "../helvetica";
 @use "../hoefler-text";
 @use "../impact";
+@use "../lucida-bright";
+@use "../lucida-console";
 @use "../lucida-grande";
+@use "../lucida-sans-typewriter";
+@use "../monaco";
 @use "../optima";
 @use "../palatino";
+@use "../papyrus";
+@use "../perpetua";
+@use "../rockwell";
+@use "../rockwell-extra-bold";
 @use "../segoe-ui";
 @use "../tahoma";
 @use "../times";

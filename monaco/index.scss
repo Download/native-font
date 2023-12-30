@@ -1,0 +1,14 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../monospace";
+
+$name: 'monaco';
+$title: 'Monaco';
+$ref: 'https://www.cssfontstack.com/Monaco';
+$fallback: monospace.$name;
+$font: native-font.add($name, meta.inspect((
+  Monaco,
+  Consolas,
+  'Lucida Console',
+  var(--#{$fallback}),
+)));

@@ -1,0 +1,13 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../fantasy";
+
+$name: 'copperplate';
+$title: 'Copperplate';
+$ref: 'https://www.cssfontstack.com/Copperplate';
+$fallback: fantasy.$name;
+$font: native-font.add($name, meta.inspect((
+  Copperplate,
+  'Copperplate Gothic Light',
+  var(--#{$fallback}),
+)));

@@ -7,6 +7,7 @@ $title: 'Rounded Sans';
 $ref: 'https://modernfontstacks.com/#rounded-sans';
 $fallback: sans-serif.$name;
 $font: native-font.add($name, meta.inspect((
+  ui-rounded,
   'Hiragino Maru Gothic ProN',
   Quicksand,
   Comfortaa,

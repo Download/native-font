@@ -1,6 +1,6 @@
 {
   "name": "native-font",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Native font stacks for web wizards",
   "sass": "_index.scss",
   "style": "all.css",
@@ -14,11 +14,12 @@
     "README.md"
   ],
   "scripts": {
+    "build:w3c": "sass ./w3c.scss ./w3c.css && sass ./w3c.scss ./w3c.min.css --style=compressed",
     "build:base": "sass ./base.scss ./base.css && sass ./base.scss ./base.min.css --style=compressed",
     "build:modern": "sass ./modern.scss ./modern.css && sass ./modern.scss ./modern.min.css --style=compressed",
     "build:cssfonts": "sass ./cssfonts.scss ./cssfonts.css && sass ./cssfonts.scss ./cssfonts.min.css --style=compressed",
     "build:all": "sass ./all.scss ./all.css && sass ./all.scss ./all.min.css --style=compressed",
-    "build": "npm run build:base && npm run build:modern && npm run build:cssfonts && npm run build:all",
+    "build": "npm run build:w3c && npm run build:base && npm run build:modern && npm run build:cssfonts && npm run build:all",
     "clean": "rimraf ./*.css ./*.css.map",
     "dev": "sass ./all.scss ./all.css -- --watch",
     "test": "exit 0"

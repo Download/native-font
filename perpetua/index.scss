@@ -1,0 +1,18 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../serif";
+
+$name: 'perpetua';
+$title: 'Perpetua';
+$ref: 'https://www.cssfontstack.com/Perpetua';
+$fallback: serif.$name;
+$font: native-font.add($name, meta.inspect((
+  Perpetua,
+  Baskerville,
+  'Big Caslon',
+  'Palatino Linotype',
+  Palatino,
+  'URW Palladio L',
+  'Nimbus Roman No9 L',
+  var(--#{$fallback}),
+)));

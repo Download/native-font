@@ -1,16 +1,17 @@
 @use "sass:meta";
 @use "../" as native-font;
-@use "../times-new-roman";
+@use "../serif";
 
 $name: 'bodoni-mt';
 $title: 'Bodoni MT';
 $ref: 'https://www.cssfontstack.com/Bodoni-MT';
-$fallback: times-new-roman.$name;
+$fallback: serif.$name;
 $font: native-font.add($name, meta.inspect((
   'Bodoni MT',
   Didot,
   'Didot LT STD',
   'Hoefler Text',
   Garamond,
+  'Times New Roman',
   var(--#{$fallback}),
 )));

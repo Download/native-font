@@ -9,6 +9,9 @@ of fonts to be used as fallbacks if the requested font does not exist. The
 resulting list of (fallback) fonts is called a font-stack.
 
 This library intends to help you make use of native font stacks on the web.
+It comes bundled with 76 pre-defined font-stacks. But don't worry! You only
+ship to the browser what you need. And these are native fonts, so there
+won't be any downloading of font files.
 
 ## Install
 ```console
@@ -27,7 +30,7 @@ Here is how that works:
 /* native-font stack */
 :root, ::backdrop {
   --color-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --sans-serif: Helvetica, Arial, sans-serif, var(--color-emoji);
+  --sans-serif: "Helvetica Neue", "Arial Nova", "Nimbus Sans", Helvetica, Arial, sans-serif, var(--color-emoji);
   --arial: "Arial Nova", Arial, "Helvetica Neue", Helvetica, var(--sans-serif);
 }
 
@@ -45,19 +48,19 @@ CSS variable `--arial`, which in turn references `--sans-serif` and
 .my-font {
   /* effective result */
   font-family: "Arial Nova", Arial, "Helvetica Neue", Helvetica,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji",
-      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      "Helvetica Neue", "Arial Nova", "Nimbus Sans", Helvetica,
+      Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol", "Noto Color Emoji";
 }
 ```css
 
 This does contain duplicates, but those are harmless. The first occurrance
-will always win. And this does actually give us a very compact yet powerful
-way to express font stacks.
+that matches will always win. And this does actually give us a very compact
+yet powerful way to express font stacks.
 
 Ok, so how to include the CSS variables in the CSS? Either you do it yourself
-with Sass (recommended), or you use one of the pre-baked sets `base.css`,
-`modern.css`, `cssfonts.css` or `all.css`.
-
+with Sass (recommended), or you use one of the pre-baked sets `w3c.css`,
+`base.css`, `modern.css`, `cssfonts.css` or `all.css`.
 
 ### Use with Sass
 
@@ -66,6 +69,7 @@ In your sass files, `@use "native-font/arial"` (for example) and then use the pr
 Example:
 
 *app.scss*
+
 ```scss
 // load native-font
 @use "native-font";
@@ -83,7 +87,7 @@ Produces:
 ```css
 :root, ::backdrop {
   --color-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --sans-serif: Helvetica, Arial, sans-serif, var(--color-emoji);
+  --sans-serif: "Helvetica Neue", "Arial Nova", "Nimbus Sans", Helvetica, Arial, sans-serif, var(--color-emoji);
   --arial: "Arial Nova", Arial, "Helvetica Neue", Helvetica, var(--sans-serif);
 }
 ```
@@ -101,37 +105,40 @@ to the collection of fonts in use.
 
 ## Available fonts (by set)
 
-### base (22 fonts)
+### [w3c](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family)
 
-*scss*
+```scss
+@use "native-font/sets/w3c";
+```
+
+Contains **14 fonts** (± 1kB):
+
+* `color-emoji` (core)
+* [`cursive`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#cursive) (generic)
+* [`emoji`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#emoji) (generic)
+* [`fangsong`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#fangsong) (generic)
+* [`fantasy`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#fantasy) (generic)
+* [`math`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#math) (generic)
+* [`monospace`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#monospace) (generic)
+* [`sans-serif`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#sans-serif) (generic)
+* [`serif`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#serif) (generic)
+* [`system-ui`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#system-ui) (ui)
+* [`ui-sans-serif`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#ui-sans-serif) (ui)
+* [`ui-serif`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#ui-serif) (ui)
+* [`ui-monospace`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#ui-monospace) (ui)
+* [`ui-rounded`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#ui-rounded) (ui)
+
+### base
 
 ```scss
 @use "native-font/sets/base";
 ```
 
-Contains **22 fonts**:
+Contains **17 fonts** (± 2kB), all 14 from [`w3c`](#w3c), plus these 3:
 
-* `color-emoji` (core)
-* [`cursive`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#cursive) (w3c)
-* [`emoji`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#emoji) (w3c)
-* [`fangsong`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#fangsong) (w3c)
-* [`fantasy`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#fantasy) (w3c)
-* [`math`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#math) (w3c)
-* [`monospace`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#monospace) (w3c)
-* [`sans-serif`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#sans-serif) (w3c)
-* [`serif`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#serif) (w3c)
-* [`system-ui`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#system-ui) (w3c)
-* `sans-serif-ui` (extra)
-* [`ui-sans-serif`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#ui-sans-serif) (w3c)
-* [`ui-serif`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#ui-serif) (w3c)
-* `monospace-console` (extra)
-* `monospace-code` (extra)
-* [`ui-monospace`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#ui-monospace) (w3c)
-* `rounded-sans` (extra)
-* [`ui-rounded`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#ui-rounded) (w3c)
-* `sans-serif-condensed` (extra)
-* `sans-serif-nova` (extra)
-* [`magicon`](https://npmjs.com/package/magicon) (extra)
+* [`emojicon`](https://npmjs.com/package/magicon) (generic-extra)
+* `ui-emoji` (generic-extra)
+* `ui-emojicon` (generic-extra)
 
 ### [modern](https://modernfontstacks.com)
 
@@ -141,7 +148,7 @@ Contains **22 fonts**:
 @use "native-font/sets/modern";
 ```
 
-Contains **31 fonts**, all from [`base`](#base), plus:
+Contains **28 fonts** (± 3kB), all 17 from [`base`](#base), plus these 11:
 
 * [`antique`](https://modernfontstacks.com/#antique)
 * [`classical-humanist`](https://modernfontstacks.com/#classical-humanist)
@@ -149,7 +156,9 @@ Contains **31 fonts**, all from [`base`](#base), plus:
 * [`geometric-humanist`](https://modernfontstacks.com/#geometric-humanist)
 * [`handwritten`](https://modernfontstacks.com/#handwritten)
 * [`industrial`](https://modernfontstacks.com/#industrial)
+* [`monospace-code`](https://modernfontstacks.com/#monospace-code)
 * [`monospace-slab-serif`](https://modernfontstacks.com/#monospace-slab-serif)
+* [`rounded-sans`](https://modernfontstacks.com/#rounded-sans)
 * [`slab-serif`](https://modernfontstacks.com/#slab-serif)
 * [`transitional`](https://modernfontstacks.com/#transitional)
 
@@ -162,30 +171,31 @@ Contains **31 fonts**, all from [`base`](#base), plus:
 @use "native-font/sets/cssfonts";
 ```
 
-Contains **57 fonts**, all from [`base`](#base), plus:
+Contains **64 fonts** (± 5kB), all 17 from [`base`](#base), plus these 47:
 
+* [`andale-mono`](https://www.cssfontstack.com/Andale-Mono)
 * [`arial`](https://www.cssfontstack.com/Arial)
 * [`arial-black`](https://www.cssfontstack.com/Arial-Black)
 * [`arial-narrow`](https://www.cssfontstack.com/Arial-Narrow)
 * [`arial-rounded-mt-bold`](https://www.cssfontstack.com/Arial-Rounded-MT-Bold)
 * [`avant-garde`](https://www.cssfontstack.com/Avant-Garde)
-* [`times`](https://www.cssfontstack.com/Times)
-* [`times-new-roman`](https://www.cssfontstack.com/Times-New-Roman)
-* [`garamond`](https://www.cssfontstack.com/Garamond)
 * [`baskerville-old-face`](https://www.cssfontstack.com/Baskerville-Old-Face)
 * [`baskerville`](https://www.cssfontstack.com/Baskerville)
 * [`big-caslon`](https://www.cssfontstack.com/Big-Caslon)
 * [`bodoni-mt`](https://www.cssfontstack.com/Bodoni-MT)
-* [`palatino`](https://www.cssfontstack.com/Palatino)
 * [`book-antiqua`](https://www.cssfontstack.com/Book-Antiqua)
 * [`calibri`](https://www.cssfontstack.com/calibri)
 * [`calisto-mt`](https://www.cssfontstack.com/calisto-mt)
 * [`cambria`](https://www.cssfontstack.com/Cambria)
 * [`candara`](https://www.cssfontstack.com/Candara)
 * [`century-gothic`](https://www.cssfontstack.com/Century-Gothic)
+* [`consolas`](https://www.cssfontstack.com/Consolas)
+* [`copperplate`](https://www.cssfontstack.com/Copperplate)
+* [`courier-new`](https://www.cssfontstack.com/Courier-New)
 * [`didot`](https://www.cssfontstack.com/Didot)
 * [`franklin-gothic-medium`](https://www.cssfontstack.com/Franklin-Gothic-Medium)
 * [`futura`](https://www.cssfontstack.com/Futura)
+* [`garamond`](https://www.cssfontstack.com/Garamond)
 * [`geneva`](https://www.cssfontstack.com/Geneva)
 * [`georgia`](https://www.cssfontstack.com/Georgia)
 * [`gill-sans`](https://www.cssfontstack.com/Gill-Sans)
@@ -193,12 +203,23 @@ Contains **57 fonts**, all from [`base`](#base), plus:
 * [`helvetica`](https://www.cssfontstack.com/Helvetica)
 * [`hoefler-text`](https://www.cssfontstack.com/Hoefler-Text)
 * [`impact`](https://www.cssfontstack.com/Impact)
-* [`verdana`](https://www.cssfontstack.com/Verdana)
+* [`lucida-bright`](https://www.cssfontstack.com/Lucida-Bright)
+* [`lucida-console`](https://www.cssfontstack.com/Lucida-Console)
 * [`lucida-grande`](https://www.cssfontstack.com/Lucida-Grande)
+* [`lucida-sans-typewriter`](https://www.cssfontstack.com/Lucida-Sans-Typewriter)
+* [`monaco`](https://www.cssfontstack.com/Monaco)
 * [`optima`](https://www.cssfontstack.com/Optima)
+* [`palatino`](https://www.cssfontstack.com/Palatino)
+* [`papyrus`](https://www.cssfontstack.com/Papyrus)
+* [`perpetua`](https://www.cssfontstack.com/Perpetua)
+* [`rockwell`](https://www.cssfontstack.com/Rockwell)
+* [`rockwell-extra-bold`](https://www.cssfontstack.com/Rockwell-Extra-Bold)
 * [`segoe-ui`](https://www.cssfontstack.com/segoe-ui)
 * [`tahoma`](https://www.cssfontstack.com/Tahoma)
+* [`times`](https://www.cssfontstack.com/Times)
+* [`times-new-roman`](https://www.cssfontstack.com/Times-New-Roman)
 * [`trebuchet-ms`](https://www.cssfontstack.com/Trebuchet-MS)
+* [`verdana`](https://www.cssfontstack.com/Verdana)
 
 
 ### all
@@ -209,8 +230,9 @@ Contains **57 fonts**, all from [`base`](#base), plus:
 @use "native-font/sets/all";
 ```
 
-Contains **66 fonts**:
+Contains **76 fonts**: (± 6kB)
 
-* [`base`](#base): 22 fonts
-* [`modern`](#modern): 9 fonts (+ 22 from base)
-* [`cssfonts`](#cssfonts): 35 fonts (+ 22 from base)
+* [`w3c`](#w3c): 14 fonts (± 1kB)
+* [`base`](#base): 3 + 14 makes 17 fonts (± 2kB)
+* [`modern`](#modern): 11 + 17 makes 28 fonts (± 3kB)
+* [`cssfonts`](#cssfonts): 47 + 17 makes 64 fonts (± 5kB)

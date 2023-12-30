@@ -1,13 +1,14 @@
 @use "sass:meta";
 @use "../" as native-font;
-@use "../arial";
+@use "../sans-serif";
 
 $name: 'futura';
 $title: 'Futura';
 $ref: 'https://www.cssfontstack.com/Futura';
-$fallback: arial.$name;
+$fallback: sans-serif.$name;
 $font: native-font.add($name, meta.inspect((
   Futura,
   'Trebuchet MS',
+  Arial,
   var(--#{$fallback}),
 )));

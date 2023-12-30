@@ -1,15 +1,16 @@
 @use "sass:meta";
 @use "../" as native-font;
-@use "../sans-serif-condensed";
+@use "../sans-serif";
 
 $name: 'industrial';
 $title: 'Industrial';
 $ref: 'https://modernfontstacks.com/#industrial';
-$fallback: sans-serif-condensed.$name;
+$fallback: sans-serif.$name;
 $font: native-font.add($name, meta.inspect((
   Bahnschrift,
   'DIN Alternate',
   'Franklin Gothic Medium',
   'Nimbus Sans Narrow',
+  sans-serif-condensed,
   var(--#{$fallback}),
 )));

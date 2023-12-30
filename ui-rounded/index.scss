@@ -1,12 +1,20 @@
 @use "sass:meta";
 @use "../" as native-font;
-@use "../rounded-sans";
+@use "../sans-serif";
 
 $name: 'ui-rounded';
 $title: 'ui-rounded';
 $ref: 'https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#ui-rounded';
-$fallback: rounded-sans.$name;
+$fallback: sans-serif.$name;
 $font: native-font.add($name, meta.inspect((
   ui-rounded,
+  'Hiragino Maru Gothic ProN',
+  Quicksand,
+  Comfortaa,
+  Manjari,
+  'Arial Rounded MT',
+  'Arial Rounded MT Bold',
+  Calibri,
+  source-sans-pro,
   var(--#{$fallback}),
 )));

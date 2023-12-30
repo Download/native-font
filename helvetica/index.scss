@@ -1,13 +1,14 @@
 @use "sass:meta";
 @use "../" as native-font;
-@use "../arial";
+@use "../sans-serif";
 
 $name: 'helvetica';
 $title: 'Helvetica';
 $ref: 'https://www.cssfontstack.com/Helvetica';
-$fallback: arial.$name;
+$fallback: sans-serif.$name;
 $font: native-font.add($name, meta.inspect((
   Helvetica,
   'Helvetica Neue',
+  Arial,
   var(--#{$fallback}),
 )));

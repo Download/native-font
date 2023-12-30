@@ -1,0 +1,13 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../monospace";
+
+$name: 'consolas';
+$title: 'Consolas';
+$ref: 'https://www.cssfontstack.com/Consolas';
+$fallback: monospace.$name;
+$font: native-font.add($name, meta.inspect((
+  'Consolas',
+  Monaco,
+  var(--#{$fallback}),
+)));

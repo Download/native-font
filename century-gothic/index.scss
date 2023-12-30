@@ -1,11 +1,11 @@
 @use "sass:meta";
 @use "../" as native-font;
-@use "../arial";
+@use "../sans-serif";
 
 $name: 'century-gothic';
 $title: 'Century Gothic';
 $ref: 'https://www.cssfontstack.com/Century-Gothic';
-$fallback: arial.$name;
+$fallback: sans-serif.$name;
 $font: native-font.add($name, meta.inspect((
   'Century Gothic',
   CenturyGothic,

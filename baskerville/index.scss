@@ -1,12 +1,16 @@
 @use "sass:meta";
 @use "../" as native-font;
-@use "../baskerville-old-face";
+@use "../serif";
 
 $name: 'baskerville';
 $title: 'Baskerville';
 $ref: 'https://www.cssfontstack.com/Baskerville';
-$fallback: baskerville-old-face.$name;
+$fallback: serif.$name;
 $font: native-font.add($name, meta.inspect((
   Baskerville,
+  'Baskerville Old Face',
+  'Hoefler Text',
+  Garamond,
+  'Times New Roman',
   var(--#{$fallback}),
 )));

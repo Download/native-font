@@ -1,14 +1,10 @@
 @use "sass:meta";
 @use "../" as native-font;
-@use "../monospace-console";
+@use "../ui-monospace";
 
 $name: 'monospace-code';
 $title: 'Monospace Code';
+$fallback: ui-monospace.$name;
 $font: native-font.add($name, meta.inspect((
-  'Cascadia Code',
-  'Source Code Pro',
-  SFMono-Regular,
-  Menlo,
-  Monaco,
-  var(--#{monospace-console.$name}),
+  var(--#{$fallback}),
 )));

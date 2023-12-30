@@ -1,16 +1,17 @@
 @use "sass:meta";
 @use "../" as native-font;
-@use "../arial";
+@use "../sans-serif";
 
 $name: 'candara';
 $title: 'Candara';
 $ref: 'https://www.cssfontstack.com/Candara';
-$fallback: arial.$name;
+$fallback: sans-serif.$name;
 $font: native-font.add($name, meta.inspect((
   Candara,
   Calibri,
   Segoe,
   'Segoe UI',
   Optima,
+  Arial,
   var(--#{$fallback}),
 )));

@@ -1,12 +1,13 @@
 @use "sass:meta";
 @use "../" as native-font;
-@use "../times-new-roman";
+@use "../serif";
 
 $name: 'georgia';
 $title: 'Georgia';
 $ref: 'https://www.cssfontstack.com/Georgia';
-$fallback: times-new-roman.$name;
+$fallback: serif.$name;
 $font: native-font.add($name, meta.inspect((
   Georgia,
+  'Times New Roman',
   var(--#{$fallback}),
 )));

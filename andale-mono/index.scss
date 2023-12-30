@@ -1,0 +1,13 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../monospace";
+
+$name: 'andale-mono';
+$title: 'Andale Mono';
+$ref: 'https://www.cssfontstack.com/Andale-Mono';
+$fallback: monospace.$name;
+$font: native-font.add($name, meta.inspect((
+  'Andale Mono',
+  AndaleMono,
+  var(--#{$fallback}),
+)));

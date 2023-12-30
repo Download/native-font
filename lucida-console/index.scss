@@ -1,0 +1,15 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../monospace";
+
+$name: 'lucida-console';
+$title: 'Lucida Console';
+$ref: 'https://www.cssfontstack.com/Lucida-Console';
+$fallback: monospace.$name;
+$font: native-font.add($name, meta.inspect((
+  'Lucida Console',
+  'Lucida Sans Typewriter',
+  Monaco,
+  'Bitstream Vera Sans Mono',
+  var(--#{$fallback}),
+)));

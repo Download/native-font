@@ -1,0 +1,12 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../fantasy";
+
+$name: 'papyrus';
+$title: 'Papyrus';
+$ref: 'https://www.cssfontstack.com/Papyrus';
+$fallback: fantasy.$name;
+$font: native-font.add($name, meta.inspect((
+  Papyrus,
+  var(--#{$fallback}),
+)));

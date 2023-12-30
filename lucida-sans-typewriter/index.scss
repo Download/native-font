@@ -1,0 +1,15 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../monospace";
+
+$name: 'lucida-sans-typewriter';
+$title: 'Lucida Sans Typewriter';
+$ref: 'https://www.cssfontstack.com/Lucida-Sans-Typewriter';
+$fallback: monospace.$name;
+$font: native-font.add($name, meta.inspect((
+  'Lucida Sans Typewriter',
+  'Lucida Console',
+  Monaco,
+  'Bitstream Vera Sans Mono',
+  var(--#{$fallback}),
+)));

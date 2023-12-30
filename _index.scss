@@ -6,7 +6,6 @@ $fonts: ();
 
 @function add($name, $font) {
   $fonts: map.merge($fonts, ( $name: $font )) !global;
-  @debug Loaded font #{$name} #{$font};
   @return $font;
 }
 

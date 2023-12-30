@@ -1,12 +1,16 @@
 @use "sass:meta";
 @use "../" as native-font;
-@use "../palatino";
+@use "../serif";
 
 $name: 'book-antiqua';
 $title: 'Book Antiqua';
 $ref: 'https://www.cssfontstack.com/Book-Antiqua';
-$fallback: palatino.$name;
+$fallback: serif.$name;
 $font: native-font.add($name, meta.inspect((
   'Book Antiqua',
+  Palatino,
+  'Palatino Linotype',
+  'Palatino LT STD',
+  Georgia,
   var(--#{$fallback}),
 )));

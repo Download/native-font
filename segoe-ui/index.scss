@@ -1,15 +1,17 @@
 @use "sass:meta";
 @use "../" as native-font;
-@use "../arial";
+@use "../sans-serif";
 
 $name: 'segoe-ui';
 $title: 'Segoe UI';
 $ref: 'https://www.cssfontstack.com/Segoe-UI';
-$fallback: arial.$name;
+$fallback: sans-serif.$name;
 $font: native-font.add($name, meta.inspect((
   'Segoe UI',
   Frutiger,
   'Frutiger Linotype',
   'Dejavu Sans',
+  'Helvetica Neue',
+  Arial,
   var(--#{$fallback}),
 )));

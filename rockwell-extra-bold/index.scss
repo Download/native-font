@@ -1,0 +1,13 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../monospace";
+
+$name: 'rockwell-extra-bold';
+$title: 'Rockwell Extra Bold';
+$ref: 'https://www.cssfontstack.com/Rockwell-Extra-Bold';
+$fallback: monospace.$name;
+$font: native-font.add($name, meta.inspect((
+  'Rockwell Extra Bold',
+  'Rockwell Bold',
+  var(--#{$fallback}),
+)));

@@ -1,14 +1,15 @@
 @use "sass:meta";
 @use "../" as native-font;
-@use "../times-new-roman";
+@use "../serif";
 
 $name: 'goudy-old-style';
 $title: 'Goudy Old Style';
 $ref: 'https://www.cssfontstack.com/Goudy-Old-Style';
-$fallback: times-new-roman.$name;
+$fallback: serif.$name;
 $font: native-font.add($name, meta.inspect((
   'Goudy Old Style',
   Garamond,
   'Big Caslon',
+  'Times New Roman',
   var(--#{$fallback}),
 )));

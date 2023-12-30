@@ -1,0 +1,12 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../cursive";
+
+$name: 'book-antiqua';
+$title: 'Book Antiqua';
+$ref: 'https://www.cssfontstack.com/Book-Antiqua';
+$fallback: cursive.$name;
+$font: native-font.add($name, meta.inspect((
+  'Brush Script MT',
+  var(--#{$fallback}),
+)));

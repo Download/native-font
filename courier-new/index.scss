@@ -1,0 +1,15 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../monospace";
+
+$name: 'courier-new';
+$title: 'Courier New';
+$ref: 'https://www.cssfontstack.com/Courier-New';
+$fallback: monospace.$name;
+$font: native-font.add($name, meta.inspect((
+  'Courier New',
+  Courier,
+  'Lucida Sans Typewriter',
+  'Lucida Typewriter',
+  var(--#{$fallback}),
+)));

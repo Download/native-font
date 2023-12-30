@@ -1,19 +1,12 @@
 @use "sass:meta";
 @use "../" as native-font;
-@use "../sans-serif";
+@use "../ui-sans-serif";
 
 $name: 'system-ui';
 $title: 'system-ui';
 $ref: 'https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#system-ui';
-$fallback: sans-serif.$name;
+$fallback: ui-sans-serif.$name;
 $font: native-font.add($name, meta.inspect((
   system-ui,
-  -apple-system,
-  BlinkMacSystemFont,
-  "Segoe UI",
-  Roboto,
-  "Helvetica Neue",
-  "Noto Sans",
-  "Liberation Sans",
   var(--#{$fallback}),
 )));
