@@ -1,5 +1,9 @@
-// all base fonts + fonts from https://www.cssfontstack.com/
+// cssfonts: base + [cssfonts](https://www.cssfontstack.com/)
+
+// base
 @use "base";
+
+// cssfonts
 @use "../andale-mono";
 @use "../arial";
 @use "../arial-black";

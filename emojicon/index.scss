@@ -4,9 +4,9 @@
 
 $name: 'emojicon';
 $title: 'emojicon';
-$ref: '';
+$ref: 'https://stijndewitt.com/2024/01/02/emojicons-the-future-of-icons-on-the-web/';
 $fallback: emoji.$name;
 $font: native-font.add($name, meta.inspect((
-  'Noto Emoji',
+  emojicon,
   var(--#{$fallback}),
 )));

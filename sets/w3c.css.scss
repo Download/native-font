@@ -1,0 +1,7 @@
+// w3c
+@use "../" as native-font;
+@use "w3c";
+
+:root, ::backdrop {
+  @include native-font.variables();
+}

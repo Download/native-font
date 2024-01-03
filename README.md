@@ -5,7 +5,7 @@
 
 This library intends to help you make use of native font stacks on the web.
 
-It comes bundled with 76 pre-defined fonts. But don't worry! You only ship to
+It comes bundled with 75 pre-defined fonts. But don't worry! You only ship to
 the browser what you need. And these are native fonts, so there won't be any
 downloading of font files. It's just the definitions needed to use the fonts
 that are pre-installed on the end user machine.
@@ -105,11 +105,28 @@ There are also some predefined sets available that you can load:
 * [`cssfonts](#cssfonts): The web-safe fonts we know and love
 * [`all`](#all): The complete set of all of the above
 
-You can also load these predefined sets by importing the CSS stylesheet:
+You can load a set of fonts by `@use`ing the set like this:
+
+```scss
+@use "native-font/sets/modern"
+```
+
+You still have to [output the styles](#output-the-styles) for the set.
+
+Or, you can load these predefined sets by importing the CSS stylesheet:
 
 ```css
-@import 'native-font/modern.css';
+@import 'native-font/sets/modern.css';
 ```
+
+This already includes the styles so you don't have to output them yourself.
+
+When you go the CSS route, you can also select the minified version:
+
+```css
+@import 'native-font/sets/modern.min.css';
+```
+
 
 ### Output the styles
 
@@ -154,7 +171,7 @@ the font we actually selected.
 @use "native-font/sets/w3c";
 ```
 
-Contains **14 fonts** (± 1kB):
+Contains **14 fonts** (± 1.4kB, ~800 bytes gzipped):
 
 * `color-emoji` (core)
 * [`cursive`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#cursive) (generic)
@@ -177,11 +194,11 @@ Contains **14 fonts** (± 1kB):
 @use "native-font/sets/base";
 ```
 
-Contains **17 fonts** (± 2kB), all 14 from [`w3c`](#w3c), plus these 3:
+Contains **17 fonts** (± 1.5kB, ~840 bytes gzipped), all 14 from [`w3c`](#w3c), plus these 3:
 
-* [`emojicon`](https://npmjs.com/package/magicon) (generic-extra)
-* `ui-emoji` (generic-extra)
-* `ui-emojicon` (generic-extra)
+* `emojicon`
+* `ui-emoji`
+* `ui-emojicon`
 
 ### [modern](https://modernfontstacks.com)
 
@@ -191,7 +208,7 @@ Contains **17 fonts** (± 2kB), all 14 from [`w3c`](#w3c), plus these 3:
 @use "native-font/sets/modern";
 ```
 
-Contains **28 fonts** (± 3kB), all 17 from [`base`](#base), plus these 11:
+Contains **28 fonts** (± 2.6kB, ~1.2kB gzipped), all 17 from [`base`](#base), plus these 11:
 
 * [`antique`](https://modernfontstacks.com/#antique)
 * [`classical-humanist`](https://modernfontstacks.com/#classical-humanist)
@@ -214,7 +231,7 @@ Contains **28 fonts** (± 3kB), all 17 from [`base`](#base), plus these 11:
 @use "native-font/sets/cssfonts";
 ```
 
-Contains **64 fonts** (± 5kB), all 17 from [`base`](#base), plus these 47:
+Contains **64 fonts** (± 5.3kB, ~1.8kB gzipped), all 17 from [`base`](#base), plus these 47:
 
 * [`andale-mono`](https://www.cssfontstack.com/Andale-Mono)
 * [`arial`](https://www.cssfontstack.com/Arial)
@@ -273,10 +290,59 @@ Contains **64 fonts** (± 5kB), all 17 from [`base`](#base), plus these 47:
 @use "native-font/sets/all";
 ```
 
-Contains **76 fonts**: (± 6kB)
+Contains **75 fonts**: (± 6.4kB, ~2.0kB gzipped)
 
-* [`w3c`](#w3c): 14 fonts (± 1kB)
-* [`base`](#base): 3 + 14 makes 17 fonts (± 2kB)
-* [`modern`](#modern): 11 + 17 makes 28 fonts (± 3kB)
-* [`cssfonts`](#cssfonts): 47 + 17 makes 64 fonts (± 5kB)
+* [`w3c`](#w3c): 14 fonts
+* [`base`](#base): +3 fonts
+* [`modern`](#modern): +11 fonts
+* [`cssfonts`](#cssfonts): +47 fonts
 
+
+## About the extra fonts in `base`
+
+The [`base`](#base) font set adds three extra font names to the set defined
+by [`w3c`](#w3c). Here is the reasoning behind these additions.
+
+### `ui-emoji`
+
+Traditionally, the standard font names defined by w3c, such as `sans-serif`,
+are used as fallbacks in font stacks to indicate the type of family of font
+we would like to get when the main font is not available. The standard font
+`emoji` fits in this category of fallback fonts. However, recently we have
+seen a desire amongst web designers to communicate the intention of 'give us
+the font that the host system uses for UI'. So instead of trying to specify
+in generic terms which fallback font we want, we would like to say quitte
+specifically actually that we want 'the ui font'. so we are not talking about
+a fallback scenario here. And indeed we tend to specify fonts like `system-ui`
+and `ui-monospace` at the _start_ of the font stack, instead of at the end.
+
+For this reason I find it strange that there is no `ui-emoji`, even though we
+did get `ui-serif`, `ui-sans-serif` and `ui-monospace`. Just like with the other
+`ui-*` fonts, `ui-emoji` would be intended to say 'the font the host system UI
+uses for emoji', instead of the much more generic 'a font intended for emoji'.
+So `base` adds `ui-emoji` for completeness.
+
+### emojicon
+Emojis are somewhat of an oddity amongst the other characters and symbols, because
+normally characters are not colored by themselves. Text is usually monochrome in
+nature and we apply color via CSS rules like `color: green;`. However Emoji are
+different. These characters often do get colors and usually don't respond to the
+`color` CSS rule. Icon fonts on the other hand use the fact that characters usually
+are monochrome and only get color through CSS to allow designers to display the same
+icon in many different colors just like they can do with text.
+
+Noto Emoji is a recent example of a font that specifically adresses this, by offering
+all the Unicode emoji as monochrome icons that can be colored by CSS rules.
+
+I think it would be convenient to be able to express the idea of 'icons based on
+emoji'. Its not just an emoji font. Its an emoji font specifically for
+icons. Hence the contraction `emojicon`. i wrote
+[a blog post](https://stijndewitt.com/2024/01/02/emojicons-the-future-of-icons-on-the-web/)
+about this idea and I am taking the liberty of introucing it in this library in the hope
+that other developers will be able to build on it so we can work towards portable icons
+on the web together.
+
+### emojicon-ui
+The font the host OS uses for displaying [`emojicon`](#emojicon).
+Adding this font seems like the consistent choice to make. Don't expect too much in
+terms of support but it is here and we can tune it in the future.

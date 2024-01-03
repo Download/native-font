@@ -1,5 +1,9 @@
-// all base fonts + fonts from https://modernfontstacks.com/
+// modern: base + [modern](https://modernfontstacks.com/)
+
+// base
 @use "base";
+
+// modern
 @use "../antique";
 @use "../classical-humanist";
 @use "../didone";

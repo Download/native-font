@@ -1,0 +1,7 @@
+// cssfonts
+@use "../" as native-font;
+@use "cssfonts";
+
+:root, ::backdrop {
+  @include native-font.variables();
+}

@@ -1,0 +1,7 @@
+// base
+@use "../" as native-font;
+@use "base";
+
+:root, ::backdrop {
+  @include native-font.variables();
+}

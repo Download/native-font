@@ -1,0 +1,18 @@
+// base: w3c + 3 extra
+
+// w3c
+@use "w3c";
+
+// 3 extra
+
+// the default ui font for emoji
+// w3c already defines `emoji` and `ui-serif`, `ui-sans-serif` and
+// `ui-monospace`, so in fact the absence of `ui-emoji` is strange...
+@use "../ui-emoji";
+
+// emojicon = emoji icon, for iconfonts based on the emoji set
+@use "../emojicon";
+
+// when we introduce `emojicon`, it only makes sense to also introduce
+// `ui-emojicon` for consisteny. se here it is.
+@use "../ui-emojicon";

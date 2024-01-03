@@ -2,6 +2,9 @@
 *.css
 *.css.map
 
+# Mac folder attributes file
+.DS_Store
+
 # Logs
 logs
 *.log

@@ -1,6 +1,5 @@
+// w3c
 // generic fonts defined by W3c, used for fallback
-@use "../" as native-font;
-
 @use "../cursive";
 @use "../emoji";
 @use "../fangsong";
@@ -9,3 +8,9 @@
 @use "../monospace";
 @use "../sans-serif";
 @use "../serif";
+// UI fonts defined by W3c, change with device/OS
+@use "../system-ui";
+@use "../ui-sans-serif";
+@use "../ui-serif";
+@use "../ui-monospace";
+@use "../ui-rounded";

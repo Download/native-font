@@ -7,5 +7,6 @@ $title: 'ui-emojicon';
 $ref: '';
 $fallback: emojicon.$name;
 $font: native-font.add($name, meta.inspect((
+  ui-emojicon,
   var(--#{$fallback}),
 )));
