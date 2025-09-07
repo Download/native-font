@@ -5,7 +5,7 @@
 
 This library intends to help you make use of native font stacks on the web.
 
-It comes bundled with 75 pre-defined fonts. But don't worry! You only ship to
+It comes bundled with 76 pre-defined fonts. But don't worry! You only ship to
 the browser what you need. And these are native fonts, so there won't be any
 downloading of font files. It's just the definitions needed to use the fonts
 that are pre-installed on the end user machine.
@@ -16,6 +16,7 @@ that are pre-installed on the end user machine.
 ```console
 npm install --save-dev native-font
 ```
+
 
 ## Include
 
@@ -37,11 +38,75 @@ npm install --save-dev native-font
 @use "native-font/courier-new";
 ```
 
+## Background
+
+### What is a font stack?
+In web development, we don't know beforehand about all the fonts that will be
+available on the user device. So we can define a *stack* of fonts; the first
+font will be used if available. If not, we proceed to the next font on the
+stack until we hit one that is available on the user device. That one will be
+used. The trick then becomes to find those fonts available on the platforms we
+want to target, that resemble each other enough so that one can be used as a
+fallback for the other. People have done that work and published their results
+on sites like [cssfontstack.com](https://www.cssfontstack.com) and
+[modernfontstacks.com](https://modernfontstacks.com).
+
+### Why this module?
+This module acts both as a format for defining font stacks in a re-usable way
+and as a repository for fonts that can be used. Hopefully, we will be able to
+expand the repository of ready-made fonts with open source contributions.
+
+We define font stacks in such a way that we can re-use one font stack in the
+definition of another and use the power of sass to automatically resolve the
+dependency tree and generate the CSS definitions.
+
+The fonts will be made available through css variables. For example, this sass
+code:
+
+```scss
+@use "native-font";
+@use "native-font/industrial";
+
+:root, ::backdrop {
+  @include native-font.variables();
+}
+
+h1 {
+  font-family: var(--industrial);
+}
+```
+
+results in this CSS:
+
+```css
+:root, ::backdrop {
+  --color-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --sans-serif: "Helvetica Neue", "Arial Nova", "Nimbus Sans", Helvetica, Arial, sans-serif, var(--color-emoji);
+  --industrial: Bahnschrift, "DIN Alternate", "Franklin Gothic Medium", "Nimbus Sans Narrow", sans-serif-condensed, var(--sans-serif);
+}
+
+h1 {
+  font-family: var(--industrial);
+}
+```
+
+You get a CSS variable `--industrial` that represents the font stack for the
+font you selected. And in addition, you get CSS variable `--sans-serif` because
+`--industrial` uses `--sans-serif` as fallback and you get `--color-emoji`
+because `sans-serif` in turn has `--color-emoji` as fallback. All these
+dependencies were resolved for you automatically.
+
+Your `font-family` assignments become short and readable and the font stack
+itself becomes explicit and managed in a structured way.
+
+
 ## Use
 
 Lets first look at how to [apply a font](#apply-a-font) to your text and cover
 how to [define a set of fonts](#define-a-set-of-fonts) and
-[output the styles](#output-the-styles) later.
+[output the styles](#output-the-styles) later. Lastly we will discuss how you
+can [add your own fonts](#add-your-own-fonts) to the set of available fonts.
+
 
 ### Apply a font
 
@@ -101,8 +166,9 @@ There are also some predefined sets available that you can load:
 
 * [`w3c`](#w3c): The family names defined by the World Wide Web Consortium
 * [`base`](#base): The w3C fonts plus 3 extra generic names
-* [`modern](#modern): A set of modern web fonts
-* [`cssfonts](#cssfonts): The web-safe fonts we know and love
+* [`modern`](#modern): A set of modern web fonts
+* [`cssfonts`](#cssfonts): The web-safe fonts we know and love
+* [`extra`](#extra): `cssfonts` + some extra
 * [`all`](#all): The complete set of all of the above
 
 You can load a set of fonts by `@use`ing the set like this:
@@ -161,6 +227,75 @@ generic fonts, in order to improve emoji support across devices. The generic
 fonts themselves are also defined as font stacks, which is why we get
 `sans-serif` defined here as well. Because that is the fallback for `arial`,
 the font we actually selected.
+
+## Add your own fonts
+
+To add your own font, you create a folder named after your font and add an
+*index.scss* file that defines the font. Inside that file, you `@use` the fonts
+you will use as fallback.
+
+As an example, lets imagine we want to define our own font 'comic-sans' based
+on this font stack:
+
+```css
+  --comic-sans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive;
+```
+
+To turn this into a `native-font`, we would create this *.scss* file:
+
+*fonts/comic-sans/index.scss*
+
+```scss
+@use "sass:meta";
+@use "native-font";
+@use "native-font/cursive";
+
+$name: 'comic-sans';
+$title: 'Comic Sans';
+$ref: 'https://example.com/fonts/comic-sans';
+$fallback: cursive.$name;
+$font: native-font.add($name, meta.inspect((
+  'Comic Sans MS',
+  'Comic Sans',
+  'Comic Neue',
+  var(--#{$fallback}),
+)));
+```
+
+Now, you can use your `comic-sans` font like this:
+
+```scss
+@use "native-font";
+@use "./fonts/comic-sans";
+
+:root, ::backdrop {
+  @include native-font.variables();
+}
+
+h1 {
+  font-family: var(--comic-sans);
+}
+```
+
+Which generates this CSS:
+
+```css
+:root,
+::backdrop {
+  --color-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --cursive: cursive, var(--color-emoji);
+  --comic-sans: "Comic Sans MS", "Comic Sans", "Comic Neue", var(--cursive);
+}
+
+h1 {
+  font-family: var(--comic-sans);
+}
+```
+
+> Note how `--comic` uses `--cursive` as a fallback, which in turn uses
+> `--color-emoji` as a fallback. This increases emoji support for some fonts on
+> some devices, by explicitly falling back to some popular fonts with known
+> good emoji support for characters missing from the target font.
 
 
 ## Available fonts (by set)
@@ -282,6 +417,19 @@ Contains **64 fonts** (± 5.3kB, ~1.8kB gzipped), all 17 from [`base`](#base), p
 * [`verdana`](https://www.cssfontstack.com/Verdana)
 
 
+### extra
+
+*scss*
+
+```scss
+@use "native-font/sets/extra";
+```
+
+Contains **65 fonts** (± 5.3kB, ~1.8kB gzipped), all 64 from [`cssfonts`](#cssfonts), plus this 1:
+
+* `comic-sans`
+
+
 ### all
 
 *scss*
@@ -290,12 +438,13 @@ Contains **64 fonts** (± 5.3kB, ~1.8kB gzipped), all 17 from [`base`](#base), p
 @use "native-font/sets/all";
 ```
 
-Contains **75 fonts**: (± 6.4kB, ~2.0kB gzipped)
+Contains **76 fonts**: (± 6.4kB, ~2.0kB gzipped)
 
 * [`w3c`](#w3c): 14 fonts
 * [`base`](#base): +3 fonts
 * [`modern`](#modern): +11 fonts
 * [`cssfonts`](#cssfonts): +47 fonts
+* [`extra`](#extra): +1 fonts
 
 
 ## About the extra fonts in `base`
@@ -338,11 +487,11 @@ I think it would be convenient to be able to express the idea of 'icons based on
 emoji'. Its not just an emoji font. Its an emoji font specifically for
 icons. Hence the contraction `emojicon`. i wrote
 [a blog post](https://stijndewitt.com/2024/01/02/emojicons-the-future-of-icons-on-the-web/)
-about this idea and I am taking the liberty of introucing it in this library in the hope
+about this idea and I am taking the liberty of introducing it in this library in the hope
 that other developers will be able to build on it so we can work towards portable icons
 on the web together.
 
-### emojicon-ui
+### ui-emojicon
 The font the host OS uses for displaying [`emojicon`](#emojicon).
 Adding this font seems like the consistent choice to make. Don't expect too much in
 terms of support but it is here and we can tune it in the future.

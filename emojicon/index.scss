@@ -1,6 +1,7 @@
 @use "sass:meta";
 @use "../" as native-font;
 @use "../emoji";
+@use "../sans-serif";
 
 $name: 'emojicon';
 $title: 'emojicon';
@@ -9,4 +10,5 @@ $fallback: emoji.$name;
 $font: native-font.add($name, meta.inspect((
   emojicon,
   var(--#{$fallback}),
+  var(--#{sans-serif.$name}),
 )));

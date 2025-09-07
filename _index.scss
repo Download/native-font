@@ -9,7 +9,6 @@ $fonts: ();
     $font: list.append($font, get($name), "comma");
   }
   $fonts: map.merge($fonts, ( $name: $font )) !global;
-  @debug add #{$name} #{$font} results in #{map.get($fonts, $name)};
   @return $font;
 }
 

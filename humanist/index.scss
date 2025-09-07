@@ -2,9 +2,9 @@
 @use "../" as native-font;
 @use "../sans-serif";
 
-$name: 'handwritten';
-$title: 'Handwritten';
-$ref: 'https://modernfontstacks.com/#handwritten';
+$name: 'humanist';
+$title: 'Humanist';
+$ref: 'https://modernfontstacks.com/#humanist';
 $fallback: sans-serif.$name;
 $font: native-font.add($name, meta.inspect((
   Seravek,
