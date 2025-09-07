@@ -1,0 +1,16 @@
+@use "sass:meta";
+@use "../" as native-font;
+@use "../cursive";
+
+$name: 'comic-sans';
+$title: 'Comic Sans';
+$ref: 'https://npmjs.com/package/native-font#comic-sans';
+$fallback: cursive.$name;
+$font: native-font.add($name, meta.inspect((
+  'Comic Sans MS',
+  'Comic Sans',
+  'Comic Neue',
+  'Comic Relief',
+  'Comic Helvetic',
+  var(--#{$fallback}),
+)));

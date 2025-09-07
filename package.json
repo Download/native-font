@@ -1,6 +1,6 @@
 {
   "name": "native-font",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Native font stacks for web wizards",
   "sass": "_index.scss",
   "style": "sets/all.css",
@@ -18,8 +18,9 @@
     "build:base": "sass ./sets/base.css.scss ./sets/base.css && sass ./sets/base.css.scss ./sets/base.min.css --style=compressed",
     "build:modern": "sass ./sets/modern.css.scss ./sets/modern.css && sass ./sets/modern.css.scss ./sets/modern.min.css --style=compressed",
     "build:cssfonts": "sass ./sets/cssfonts.css.scss ./sets/cssfonts.css && sass ./sets/cssfonts.css.scss ./sets/cssfonts.min.css --style=compressed",
+    "build:extra": "sass ./sets/extra.css.scss ./sets/extra.css && sass ./sets/extra.css.scss ./sets/extra.min.css --style=compressed",
     "build:all": "sass ./sets/all.css.scss ./sets/all.css && sass ./sets/all.css.scss ./sets/all.min.css --style=compressed",
-    "build": "npm run build:w3c && npm run build:base && npm run build:modern && npm run build:cssfonts && npm run build:all",
+    "build": "npm run build:w3c && npm run build:base && npm run build:modern && npm run build:cssfonts && npm run build:extra && npm run build:all",
     "clean": "rimraf **/*.css **/*.css.map",
     "dev": "sass ./all.scss ./all.css -- --watch",
     "test": "exit 0"
@@ -29,14 +30,8 @@
     "url": "git+ssh://git@github.com/download/native-font.git"
   },
   "keywords": [
-    "font",
-    "\"font",
-    "stack\"",
-    "\"native",
-    "font\"",
-    "\"native",
-    "font",
-    "stack\""
+    "native-font",
+    "font-stack"
   ],
   "author": "Stijn de Witt <stijndewitt@hotmail.com>",
   "license": "MIT",
@@ -45,7 +40,7 @@
   },
   "homepage": "https://github.com/download/native-font#readme",
   "devDependencies": {
-    "rimraf": "^5.0.5",
-    "sass": "^1.69.5"
+    "rimraf": "^6.0.1",
+    "sass": "^1.92.1"
   }
 }
