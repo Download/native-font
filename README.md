@@ -292,7 +292,7 @@ h1 {
 }
 ```
 
-> Note how `--comic` uses `--cursive` as a fallback, which in turn uses
+> Note how `--comic-sans` uses `--cursive` as a fallback, which in turn uses
 > `--color-emoji` as a fallback. This increases emoji support for some fonts on
 > some devices, by explicitly falling back to some popular fonts with known
 > good emoji support for characters missing from the target font.
